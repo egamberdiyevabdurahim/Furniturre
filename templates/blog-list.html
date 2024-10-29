@@ -1,0 +1,136 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-content">
+        <div id="wrapper-site">
+            <div id="content-wrapper">
+                <div id="main">
+                    <div class="page-home">
+
+                        <!-- breadcrumb -->
+                        <nav class="breadcrumb-bg">
+                            <div class="container no-index">
+                                <div class="breadcrumb">
+                                    <ol>
+                                        <li>
+                                            <a href="#">
+                                                <span>Home</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Living Room</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Sofa</span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="container">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+
+                                        <!-- recent posts -->
+                                        <div class="sidebar-block">
+                                            <div class="title-block">Recent Posts</div>
+                                            <div class="post-item-content">
+                                                {% for blog in recent_blogs %}
+                                                <div>
+                                                    <div class="late-item first-child">
+                                                        <a href="blog-detail.html">
+                                                            <p class="content-title">{{ blog.title }}</p>
+                                                        </a>
+                                                        <span>
+                                                            <i class="zmdi zmdi-comments"></i>13 comment
+                                                        </span>
+                                                        <span>
+                                                            <i class="zmdi zmdi-calendar-note"></i>{{ blog.updated_at | date }}
+                                                        </span>
+                                                        <p class="description">{{ blog.short_description }}
+                                                        </p>
+                                                        <p class="remove">
+                                                            <a href="blog-detail.html">READ MORE</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+
+                                        <!-- advertising -->
+                                        <div class="sidebar-block group-image-special">
+                                            <div class="effect">
+                                                <a href="#">
+                                                    <img class="img-fluid" src="{% static 'img/blog/advertising.jpg' %}" alt="banner-2" title="banner-2">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-8 col-lg-9 col-md-9 flex-xs-first main-blogs">
+                                        <h2>Recent Posts</h2>
+                                        {% for blog in blogs %}
+                                        <div class="list-content row">
+                                            <div class="hover-after col-md-5 col-xs-12">
+                                                <a href="blog-detail.html">
+                                                    <img src="{{ blog.photo.url }}" alt="img">
+                                                </a>
+                                            </div>
+                                            <div class="late-item col-md-7 col-xs-12">
+                                                <p class="content-title">
+                                                    <a href="blog-detail.html">{{ blog.title }}</a>
+                                                </p>
+                                                <p class="post-info">
+                                                    <span>{{ blog.created_at | time }} minitunes ago</span>
+                                                    <span>113 Comments</span>
+                                                    <span>{{ blog.author }}</span>
+                                                </p>
+                                                <p class="description">{{ blog.short_description }}</p>
+                                                <span class="view-more">
+                                                    <a href="blog-detail.html">view more</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+                                        <div class="page-list col">
+                                            <ul class="justify-content-center d-flex">
+                                                <li>
+                                                    <a rel="prev" href="#" class="previous disabled js-search-link">
+                                                        Previous
+                                                    </a>
+                                                </li>
+                                                <li class="current active">
+                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
+                                                        1
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
+                                                        2
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a rel="next" href="#" class="next disabled js-search-link">
+                                                        Next
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
